@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   # Root route
   root 'demo#index'
 
-  get 'demo/index'  # Shorter form of "Match route". Longer one is below
+  # Match route
+  get 'demo/index'  # Longer version is below
   # match "demo/index", :to => "demo#index", :via => :get
+  get 'demo/hello'
 
-  # get ':controller(/:action(/:id))'  # Default route. Longer version is below
+
+
+  # Default route
+  # get ':controller(/:action(/:id))'  # Longer version is below
   # match ":controller(/:action(/:id))", :via => :get
 
 
