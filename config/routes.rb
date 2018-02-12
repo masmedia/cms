@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get 'demo/index'  # Longer version is below
   # match "demo/index", :to => "demo#index", :via => :get
   get 'demo/hello'
-
+  get 'demo/other_hello'
+  get 'demo/lynda'
 
 
   # Default route
