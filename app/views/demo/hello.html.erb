@@ -1,1 +1,33 @@
 <h1>Hello world from hello!</h1>
+
+<!-- Processes and executes the Ruby code but does not output -->
+<% 1 + 1 %> 
+
+<!-- Executes the Ruby code and returns the result to the template -->
+<%= 2 + 2 %> <br />
+<!-- Both versions does not show the code from the browser 
+	when the user inspecting the template html -->
+
+<% target = "world" %>
+<%= "Hello #{target}" %>
+<br />
+
+<!-- Prints to the console rather than view template -->
+<%
+3.times do |n|
+	puts n  
+end
+%>
+
+<!-- -->
+<br />
+<!-- Prints to the console and the result (3) is printed to the view template -->
+<%=
+3.times do |n|
+	puts n
+end
+%> <br />
+<!-- Prints the result of each loop to the view template -->
+<% 3.times do |n| %>
+<%= n %> <br />
+<% end %>
