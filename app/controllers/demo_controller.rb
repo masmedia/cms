@@ -13,6 +13,10 @@ class DemoController < ApplicationController
   # This is an action 
   def hello
   	@array = [1, 2, 3, 4, 5]
+  	# For params[] array to work, symbol and string does not matter
+  	# If the route matches, Ruby adds these params as query parameters
+  	@id = params['id']
+  	@page = params[:page]
   	render('hello')  # This will render a template
 
   end

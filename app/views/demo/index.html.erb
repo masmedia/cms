@@ -3,5 +3,7 @@
 <a href="/demo/hello">Hello page 1</a><br />
 
 <!-- Other type does not work -->
-<%= link_to("Hello page 2", {:controller => 'demo', :action => 'hello'}) %><br />
-<%= link_to("Hello page 3", {:action => 'hello'}) %>
+<%= link_to("Hello page 2", {:action => 'hello'}) %><br />
+
+<!-- Ruby creates a link with URL parameters but the order of them can be different -->
+<%= link_to("Hello with parameters", {:action =>'hello', :page =>5, :id =>20}) %><br />

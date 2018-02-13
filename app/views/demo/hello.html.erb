@@ -31,4 +31,13 @@ variable in the object is passed to the rendered view -->
 <% end %>
 <br />
 <!-- Added a link to index page -->
-<%= link_to("Index page", {:action => 'index'}) %>
+<%= link_to("Index page", {:action => 'index'}) %><br />
+
+<!-- When hello page is readhed from root route's 
+	Hello page 1 or 2, params array is not loaded correctly -->
+ID:<%=params[:id]%><br />
+ID:<%=params['id']%><br />
+Page:<%=params[:page]%><br />
+<!-- params[] array always contains strings -->
+Next Page:<%=params[:page].to_i + 1%><br />
+Next Page:<%=@page.to_i + 1%><br />
