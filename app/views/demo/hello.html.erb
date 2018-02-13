@@ -18,15 +18,7 @@
 	puts n  
 end
 %>
-
-<!-- -->
 <br />
-<!-- Prints to the console and the result (3) is printed to the view template -->
-<%=
-3.times do |n|
-	puts n
-end
-%> <br />
 <!-- Prints the result of each loop to the view template -->
 <% 3.times do |n| %>
 <%= n %> <br />
@@ -37,3 +29,6 @@ variable in the object is passed to the rendered view -->
 <% @array.each do |n| %>
 <%= n %>
 <% end %>
+<br />
+<!-- Added a link to index page -->
+<%= link_to("Index page", {:action => 'index'}) %>

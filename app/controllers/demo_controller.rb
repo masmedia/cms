@@ -5,7 +5,7 @@ class DemoController < ApplicationController
   # Override the behavior by filling the index method
   def index
   	render('index')
-  	# These are also possione
+  	# These are also possible
   	# render(:template => 'demo/index')
   	# render('demo/index')
   end
