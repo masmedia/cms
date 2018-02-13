@@ -2,6 +2,7 @@ class DemoController < ApplicationController
 
   layout false
   
+  # Override the behavior by filling the index method
   def index
   	render('index')
   	# These are also possione
@@ -11,6 +12,7 @@ class DemoController < ApplicationController
 
   # This is an action 
   def hello
+  	@array = [1, 2, 3, 4, 5]
   	render('hello')  # This will render a template
 
   end

@@ -31,3 +31,9 @@ end
 <% 3.times do |n| %>
 <%= n %> <br />
 <% end %>
+<br />
+<!-- Rails will instantiate the controller object and the instance 
+variable in the object is passed to the rendered view -->
+<% @array.each do |n| %>
+<%= n %>
+<% end %>
