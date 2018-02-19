@@ -1,8 +1,8 @@
 class Subject < ApplicationRecord
 
-	# Added one-to-one relationship. The subject 'has_one' page
+	# Added one-to-many relationship. The subject 'has_many' pages
 	# Don't forget to add page belongs_to :subject in Page class
-	has_one :page
+	has_many :pages
 
 	# Named scopes are evaluated when called!
 	scope :visible, lambda { where(:visible => true)   }
