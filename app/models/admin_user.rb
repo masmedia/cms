@@ -6,4 +6,7 @@ class AdminUser < ApplicationRecord
 	# class name to CamelCase db_table_name to syncronize db with Rails conventions.
 
 	# self.table_name = "admin_users"
+
+	has_and_belongs_to_many :pages
+
 end

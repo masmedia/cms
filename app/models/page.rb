@@ -5,5 +5,6 @@ class Page < ApplicationRecord
 	# Also check the db migrations that a foreign key was added in pages table
 	belongs_to :subject
 	has_many :sections
+	has_and_belongs_to_many :admin_users
 
 end
