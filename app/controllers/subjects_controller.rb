@@ -12,6 +12,7 @@ class SubjectsController < ApplicationController
 
   # Actions related to creation
   def new
+    @subject = Subject.new( {:name=>'Default'} )
   end
 
   def create
