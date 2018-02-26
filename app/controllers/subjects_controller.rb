@@ -1,6 +1,9 @@
 class SubjectsController < ApplicationController
+  
   # Actions related to reading
   def index
+    # Use named scopes in 'Subject' model to sort them easily
+    @subjects = Subject.sorted
   end
 
   def show
