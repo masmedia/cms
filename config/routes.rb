@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
   
-  get 'subjects/index'
-
-  get 'subjects/show'
-
-  get 'subjects/new'
-
-  get 'subjects/edit'
-
-  get 'subjects/delete'
+  # get 'subjects/index'
+  # get 'subjects/show'
+  # get 'subjects/new'
+  # get 'subjects/edit'
+  # get 'subjects/delete'
 
   # Root route
   root 'demo#index'
+
+  # Resourceful routes
+  resources :subjects do
+    member do
+      get :delete   # Add eighth CRUD action which is :delete
+    end    
+  end
 
   # Match route
   get 'demo/index'  # Longer version is below
