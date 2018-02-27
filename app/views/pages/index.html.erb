@@ -7,7 +7,7 @@
 <div class="pages index">
 	<h2>Pages</h2>
 
-	<%= link_to("Add new page", '#', :class => 'action new' )%>
+	<%= link_to("Add new page", new_page_path, :class => 'action new' )%>
 
 	<table class="listing" summary="Page list">
 		<tr class="header">
@@ -29,7 +29,7 @@
 			<td class="center"><%= page.sections.size %></td>
 			<td class="actions">
 				<%= link_to("Show", page_path(page), :class => 'action show') %>
-				<%= link_to("Edit", '#', :class => 'action edit') %>
+				<%= link_to("Edit", edit_page_path(page), :class => 'action edit') %>
 				<%= link_to("Delete", '#', :class => 'action delete') %>
 			</td>
 		</tr>
