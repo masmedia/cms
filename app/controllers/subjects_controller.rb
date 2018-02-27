@@ -30,7 +30,7 @@ class SubjectsController < ApplicationController
     end
   end
 
-  # Actions related to updating and a lot like new action
+  # Actions related to updating is a lot like new action
   def edit
     @subject = Subject.find(params[:id])
   end
@@ -49,11 +49,16 @@ class SubjectsController < ApplicationController
     end
   end
 
-  # Actions related to deletion
+  # Actions related to deletion is a lot like new and edit actions
   def delete
+    @subject = Subject.find(params[:id])
   end
 
+  # Actions related to destroy (permanently removal from db)
   def destroy
+    @subject = Subject.find(params[:id])
+    @subject.destroy
+    redirect_to(subjects_path)
   end
 
   private
