@@ -30,11 +30,23 @@ class SubjectsController < ApplicationController
     end
   end
 
-  # Actions related to updating
+  # Actions related to updating and a lot like new action
   def edit
+    @subject = Subject.find(params[:id])
   end
 
+  # A lot like create action
   def update
+    # Find a new object using form parameters
+    @subject = Subject.find(params[:id])
+    # Update the object (considering again mass assignment)
+    if @subject.update_attributes(subject_params)
+      # If save succeeds, redirect to the show action
+      redirect_to( subject_path( @subject ) )
+    else 
+      # If save fails, redisplay the form so user can fix problems
+      render('edit')
+    end
   end
 
   # Actions related to deletion
