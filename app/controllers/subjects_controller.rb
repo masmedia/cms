@@ -16,6 +16,18 @@ class SubjectsController < ApplicationController
   end
 
   def create
+    # Instantiate a new object using form parameters
+    # @subject=Subject.new(params[:subject]) gives error because of mass assignment 
+    # Need to declare what must be required and what must be permitted. 
+    @subject = Subject.new(subject_params)  # private method returns parameters
+    # Save the object
+    if @subject.save
+      # If save succeeds, redirect to the index action
+      redirect_to(subjects_path)
+    else 
+      # If save fails, redisplay the form so user can fix problems
+      render('new')  # Beware that the instance variables are the same
+    end
   end
 
   # Actions related to updating
@@ -31,4 +43,10 @@ class SubjectsController < ApplicationController
 
   def destroy
   end
+
+  private
+  def subject_params
+    params.require(:subject).permit(:name, :position, :visible)
+  end
+
 end
