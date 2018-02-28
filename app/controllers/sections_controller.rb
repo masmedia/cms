@@ -30,7 +30,7 @@ class SectionsController < ApplicationController
     @section = Section.find(params[:id])
     if @section.update_attributes(section_params)
       flash[:notice] = "Section updated successfully."
-      redirect_to(sections_path)
+      redirect_to(section_path(@section))
     else
       render('edit')
     end
