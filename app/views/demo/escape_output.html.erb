@@ -1,0 +1,13 @@
+<% evil_string = "<script>alert('Gotcha!');</script>" %>
+<% good_string = "<strong>Welcome to my site!</strong>" %>
+
+<!-- This is sanitized by default. Rails adds & sign to eliminate 
+   opening and closing tags by default. Look at page source to see-->
+<%= evil_string %><br />
+<%= good_string %><br />
+
+<!-- Below one is allowing the opening and closing tags which makes 
+	 them harhmful for the app.
+<%= raw evil_string %><br />
+<%= raw good_string %><br />
+-->
