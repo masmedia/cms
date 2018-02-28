@@ -9,9 +9,16 @@ class SectionsController < ApplicationController
   end
 
   def new
+    @section = Section.new
   end
 
   def create
+    @section = Section.new(section_params)
+    if @section.save
+      redirect_to(sections_path)
+    else
+      render('new')
+    end
   end
 
   def edit
@@ -21,6 +28,11 @@ class SectionsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def section_params
+    params.require(:section).permit(:page_id, :name, :position, :visible, :content_type, :content)
   end
 
 end
