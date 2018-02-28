@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
   
+  layout 'admin'
+
   # Actions related to reading
   def index
     # Use named scopes in 'Subject' model to sort them easily
