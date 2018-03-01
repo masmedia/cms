@@ -1,6 +1,6 @@
 class DemoController < ApplicationController
 
-  layout false
+  layout 'application'
   
   # Override the behavior by filling the index method
   def index

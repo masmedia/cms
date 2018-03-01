@@ -7,3 +7,5 @@
 
 <!-- Ruby creates a link with URL parameters but the order of them can be different -->
 <%= link_to("Hello with parameters", {:action =>'hello', :page =>5, :id =>20}) %><br />
+
+<%= link_to('Roar', '#', :onclick => "jsRoar('JavaScript'); return true;") %>
