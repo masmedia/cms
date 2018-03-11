@@ -28,7 +28,8 @@ class SubjectsController < ApplicationController
       # If save succeeds, redirect to the index action
       flash[:notice] = "Subject created successfully."
       redirect_to(subjects_path)
-    else 
+    else
+      # Form partial needs page_count also. Thus add it
       @subject_count = Subject.count + 1
       # If save fails, redisplay the form so user can fix problems
       render('new')  # Beware that the instance variables are the same
@@ -50,7 +51,8 @@ class SubjectsController < ApplicationController
       # If save succeeds, redirect to the show action
       flash[:notice] = "Subject updated successfully."
       redirect_to( subject_path( @subject ) )
-    else 
+    else
+      # Form partial needs page_count also. Thus add it
       @subject_count = Subject.count
       # If save fails, redisplay the form so user can fix problems
       render('edit')

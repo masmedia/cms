@@ -12,6 +12,8 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new
+    @page_count = Page.count + 1 # We want to create new page. So +1
+    @subjects = Subject.sorted
   end
 
   # If subject_id does not exist in db, it won't add to the db
@@ -22,11 +24,16 @@ class PagesController < ApplicationController
       flash[:notice] = "Page created successfully."
       redirect_to(pages_path)
     else
+      # Form partial needs page_count also. Thus add it
+      @page_count = Page.count + 1 # We want to create new page. So +1
+      @subjects = Subject.sorted
       render('new')
     end
   end
 
   def edit
+    @page_count = Page.count # We want to edit page. No need for +1
+    @subjects = Subject.sorted
     @page = Page.find(params[:id])
   end
 
@@ -36,6 +43,8 @@ class PagesController < ApplicationController
       flash[:notice] = "Page updated successfully."
       redirect_to(page_path(@page) )
     else
+      @page_count = Page.count + 1 # We want to edit page. No need for +1
+      @subjects = Subject.sorted
       render('edit')
     end
   end
