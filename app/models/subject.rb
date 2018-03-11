@@ -14,4 +14,6 @@ class Subject < ApplicationRecord
 	# the user and ? mark sanitizes it and makes it safe from SQL injection
 	scope :search, lambda {  |query|  where(["name LIKE ?", "%#{query}%"])  }
 
+	validates_presence_of :name  # Name is required field in the form
+
 end
