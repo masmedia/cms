@@ -14,6 +14,7 @@ class AdminUser < ApplicationRecord
 
 
 	EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
+	FORBIDDEN_USERNAMES = ['littlebopeep', 'humptydumpty', 'marymary']
 
 	# "Long form" validations
 	# validates_presence_of :first_name
@@ -37,4 +38,20 @@ class AdminUser < ApplicationRecord
 					  :format => EMAIL_REGEX,
 					  :confirmation => true
 	
+	validate :username_is_allowed
+	validate :no_new_users_on_monday, :on => :create
+
+	private
+	def username_is_allowed
+		if FORBIDDEN_USERNAMES.include?(username)
+			errors.add(:username, "has been restricted from use.")
+		end
+	end
+
+	def no_new_users_on_monday
+		if Time.now.wday == 1
+			errors.add(:base, "No new users on Mondays.")
+		end
+	end
+
 end
