@@ -6,6 +6,7 @@ class SubjectsController < ApplicationController
 
   # Actions related to reading
   def index
+    logger.debug("*** Testing the logger. ***")
     # Use named scopes in 'Subject' model to sort them easily
     @subjects = Subject.sorted    
   end
