@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'access/menu'
+
+  get 'access/login'
+
   # Root route
   root 'demo#index'
 
