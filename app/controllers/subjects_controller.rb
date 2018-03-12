@@ -2,6 +2,8 @@ class SubjectsController < ApplicationController
   
   layout 'admin'
 
+  before_action :count_subjects, :only => [:new, :create, :edit, :update]
+
   # Actions related to reading
   def index
     # Use named scopes in 'Subject' model to sort them easily
@@ -14,8 +16,7 @@ class SubjectsController < ApplicationController
 
   # Actions related to creation
   def new
-    @subject = Subject.new( {:name=>'Default'} )
-    @subject_count = Subject.count + 1 # We want to create new subject. So +1
+    @subject = Subject.new( {:name=>'Default'} )    
   end
 
   def create
@@ -29,8 +30,6 @@ class SubjectsController < ApplicationController
       flash[:notice] = "Subject created successfully."
       redirect_to(subjects_path)
     else
-      # Form partial needs page_count also. Thus add it
-      @subject_count = Subject.count + 1
       # If save fails, redisplay the form so user can fix problems
       render('new')  # Beware that the instance variables are the same
     end
@@ -38,8 +37,7 @@ class SubjectsController < ApplicationController
 
   # Actions related to updating is a lot like new action
   def edit
-    @subject = Subject.find(params[:id])
-    @subject_count = Subject.count # We do not want to add new subject. Just edit
+    @subject = Subject.find(params[:id])    
   end
 
   # A lot like create action
@@ -52,8 +50,6 @@ class SubjectsController < ApplicationController
       flash[:notice] = "Subject updated successfully."
       redirect_to( subject_path( @subject ) )
     else
-      # Form partial needs page_count also. Thus add it
-      @subject_count = Subject.count
       # If save fails, redisplay the form so user can fix problems
       render('edit')
     end
@@ -78,5 +74,13 @@ class SubjectsController < ApplicationController
   def subject_params
     params.require(:subject).permit(:name, :position, :visible, :created_at)
   end
+
+  def count_subjects
+    @subject_count = Subject.count
+    if params[:action] == 'create' || params[:action] == 'new'
+      @subject_count += 1
+    end
+  end
+
 
 end
