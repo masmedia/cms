@@ -2,6 +2,7 @@ class SectionsController < ApplicationController
   
   layout 'admin'
 
+  before_action :find_pages, :only => [:new, :create, :edit, :update]
   before_action :count_sections, :only => [:new, :create, :edit, :update]
 
   def index
@@ -13,8 +14,7 @@ class SectionsController < ApplicationController
   end
 
   def new
-    @section = Section.new
-    @pages = Page.sorted
+    @section = Section.new    
   end
 
   def create
@@ -23,13 +23,11 @@ class SectionsController < ApplicationController
       flash[:notice] = "Section created successfully."
       redirect_to(sections_path)
     else
-      @pages = Page.sorted
       render('new')
     end
   end
 
   def edit
-    @pages = Page.sorted
     @section = Section.find(params[:id])
   end
 
@@ -39,7 +37,6 @@ class SectionsController < ApplicationController
       flash[:notice] = "Section updated successfully."
       redirect_to(section_path(@section))
     else
-      @pages = Page.sorted
       render('edit')
     end
   end
@@ -65,6 +62,10 @@ class SectionsController < ApplicationController
     if params[:action] == 'new' || params[:action] == 'create'
       @section_count += 1
     end
+  end
+
+  def find_pages
+    @pages = Page.sorted
   end
 
 end

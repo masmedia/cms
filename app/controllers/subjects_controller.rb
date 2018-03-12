@@ -82,5 +82,4 @@ class SubjectsController < ApplicationController
     end
   end
 
-
 end
