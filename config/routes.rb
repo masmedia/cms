@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
-  get 'access/menu'
-
-  get 'access/login'
-
   # Root route
   root 'demo#index'
+
+  get 'admin', :to => 'access#menu'  # Added route for admin area
+  # Since there is no model related to this model, treating it like 
+  # a resourceful route but adding match route instead is OK.
+  get 'access/menu'
+  get 'access/login'
+  post 'access/attempt_login'
+  get 'access/logout'
 
   # Resourceful routes
   resources :subjects do
