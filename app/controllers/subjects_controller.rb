@@ -2,6 +2,8 @@ class SubjectsController < ApplicationController
   
   layout 'admin'
 
+  
+  before_action :confirm_logged_in
   before_action :count_subjects, :only => [:new, :create, :edit, :update]
 
   # Actions related to reading

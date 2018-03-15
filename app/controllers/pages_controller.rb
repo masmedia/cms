@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 
   layout 'admin'
 
+  before_action :confirm_logged_in
   # This method will set the instance variable @subjects before 
   # new, create, edit and update actions in this controller
   before_action :find_subjects, :only => [:new, :create, :edit, :update]
