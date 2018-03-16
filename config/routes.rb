@@ -30,6 +30,12 @@ Rails.application.routes.draw do
     end    
   end
 
+  resources :admin_users, :except => [:show] do
+    member do
+      get :delete
+    end
+  end
+
   # Match route
   get 'demo/index'  # Longer version is below
   # match "demo/index", :to => "demo#index", :via => :get
