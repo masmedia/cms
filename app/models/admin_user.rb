@@ -1,12 +1,5 @@
 class AdminUser < ApplicationRecord
-# class User < ApplicationRecord  # Old table name
-	# If you have changed the db name or inherit a legacy db code from some codebase, 
-	# either add the line self.table_name = "legacy_db_table_name" or change the 
-	# file name to the lower_case_singular - separated file name and then change
-	# class name to CamelCase db_table_name to syncronize db with Rails conventions.
-
-	# self.table_name = "admin_users"
-
+	
 	has_secure_password
 
 	has_and_belongs_to_many :pages
@@ -17,19 +10,6 @@ class AdminUser < ApplicationRecord
 
 	EMAIL_REGEX = /\A[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\Z/i
 	FORBIDDEN_USERNAMES = ['littlebopeep', 'humptydumpty', 'marymary']
-
-	# "Long form" validations
-	# validates_presence_of :first_name
-	# validates_length_of :first_name, :maximum => 25
-	# validates_presence_of :last_name
-	# validates_length_of :last_name, :maximum => 50
-	# validates_presence_of :username
-	# validates_length_of :username, :within => 8..25
-	# validates_uniqueness_of :username
-	# validates_presence_of :email
-	# validates_length_of :email, :maximum => 100
-	# validates_format_of :email, :with => EMAIL_REGEX
-	# validates_confirmation_of :email
 
 	# "sexy" validations
 	validates :first_name, :presence => true, :length => {:maximum=> 25}
@@ -42,6 +22,13 @@ class AdminUser < ApplicationRecord
 	
 	validate :username_is_allowed
 	validate :no_new_users_on_monday, :on => :create
+
+	# named scopes 
+	scope :sorted, lambda { order("last_name ASC, first_name ASC")   }
+
+	def name
+		"#{first_name} #{last_name}"
+	end
 
 	private
 	def username_is_allowed
