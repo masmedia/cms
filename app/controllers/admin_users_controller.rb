@@ -9,6 +9,10 @@ class AdminUsersController < ApplicationController
   end
 
   def new
+  	@admin_user = AdminUser.new
+  end
+
+  def create
   	@admin_user = AdminUser.new(admin_user_params)
   	if @admin_user.save
   		flash[:notice] = "Admin user created successfully."
