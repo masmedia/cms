@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   # Root route
-  root 'demo#index'
+  root :to => 'public#index'
+
+  get 'show/:permalink', :to =>'public#show'
 
   get 'admin', :to => 'access#menu'  # Added route for admin area
   # Since there is no model related to this model, treating it like 
