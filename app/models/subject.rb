@@ -1,5 +1,6 @@
 class Subject < ApplicationRecord
 
+	acts_as_list
 	# Added one-to-many relationship. The subject 'has_many' pages
 	# Don't forget to add page belongs_to :subject in Page class
 	has_many :pages
